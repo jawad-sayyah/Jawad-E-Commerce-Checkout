@@ -1,0 +1,655 @@
+/* 1. General Page Styles */
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #2457d6;
+    --primary-dark: #1945b4;
+    --text: #182230;
+    --muted: #667085;
+    --border: #e4e7ec;
+    --background: #f5f7fb;
+    --success: #16834a;
+    --danger: #c0392b;
+}
+
+body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+.container {
+    width: min(1120px, calc(100% - 36px));
+    margin: 0 auto;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.muted,
+.optional {
+    color: var(--muted);
+}
+
+.muted {
+    margin: 4px 0 0;
+    font-size: 14px;
+}
+
+/* 2. Header and Footer */
+.site-header {
+    background: #ffffff;
+    border-bottom: 1px solid var(--border);
+}
+
+.header-content {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-content p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.logo {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.site-footer {
+    padding: 24px 18px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* 3. Page Heading and Layout */
+.page-content {
+    padding-top: 38px;
+    padding-bottom: 40px;
+}
+
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.page-heading h1 {
+    margin: 3px 0;
+    font-size: 32px;
+}
+
+.eyebrow {
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin: 0;
+}
+
+.step-indicator {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.step-indicator span {
+    color: #aab2c0;
+    padding: 0 5px;
+}
+
+.checkout-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.9fr);
+    gap: 22px;
+    align-items: start;
+}
+
+.checkout-main {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* 4. Panels and Section Headings */
+.panel {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 24px;
+    box-shadow: 0 3px 12px rgba(16, 24, 40, 0.035);
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.section-number {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #edf2ff;
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.compact-heading {
+    margin-bottom: 15px;
+}
+
+/* 5. Form Fields */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.field label,
+.promo-box label {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.field input,
+.field textarea,
+.promo-input-row input {
+    width: 100%;
+    border: 1px solid #d0d5dd;
+    border-radius: 7px;
+    padding: 11px 12px;
+    color: var(--text);
+    background: #ffffff;
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+.field textarea {
+    resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.promo-input-row input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(36, 87, 214, 0.1);
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.field-error {
+    color: var(--danger);
+    min-height: 0;
+    font-size: 12px;
+}
+
+.checkbox-field {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 18px;
+    font-size: 13px;
+}
+
+.checkbox-field input {
+    accent-color: var(--primary);
+}
+
+#billing-address-field {
+    margin-top: 16px;
+}
+
+.date-field {
+    margin-top: 18px;
+    max-width: 280px;
+}
+
+/* 6. Delivery and Payment Choices */
+.choice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.choice-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.choice-card.selected {
+    border-color: var(--primary);
+    background: #f5f8ff;
+}
+
+.choice-card input {
+    accent-color: var(--primary);
+}
+
+.choice-copy {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.choice-copy strong,
+.choice-price {
+    font-size: 13px;
+}
+
+.choice-copy small {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.choice-price {
+    white-space: nowrap;
+}
+
+.payment-choices {
+    margin-bottom: 16px;
+}
+
+.card-details {
+    padding: 16px;
+    border-radius: 9px;
+    background: #f8f9fc;
+    border: 1px solid var(--border);
+}
+
+/* 7. Order Summary */
+.checkout-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: sticky;
+    top: 18px;
+}
+
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 13px;
+    border-bottom: 1px solid #f0f1f4;
+}
+
+.order-item-name {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.order-item-meta {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.order-item-price {
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.promo-box {
+    margin-top: 20px;
+}
+
+.promo-input-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.promo-message {
+    display: block;
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.promo-message.success {
+    color: var(--success);
+}
+
+.promo-message.error {
+    color: var(--danger);
+}
+
+/* 8. Price Breakdown and Buttons */
+.price-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-top: 20px;
+    padding-top: 17px;
+    border-top: 1px solid var(--border);
+}
+
+.price-breakdown div {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 13px;
+}
+
+.discount-value {
+    color: var(--success);
+}
+
+.price-breakdown .total-row {
+    padding-top: 13px;
+    margin-top: 3px;
+    border-top: 1px solid var(--border);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.button {
+    border: 1px solid transparent;
+    border-radius: 7px;
+    padding: 11px 16px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.button-primary {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.button-primary:hover {
+    background: var(--primary-dark);
+}
+
+.button-outline {
+    background: #ffffff;
+    color: var(--text);
+    border-color: #d0d5dd;
+}
+
+.button-outline:hover {
+    background: #f8f9fc;
+}
+
+.button-small {
+    padding: 8px 11px;
+    font-size: 12px;
+}
+
+.place-order-button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+}
+
+.secure-note {
+    margin: 12px 0 0;
+    color: var(--muted);
+    text-align: center;
+    font-size: 11px;
+}
+
+.secure-note span {
+    color: var(--success);
+    font-weight: 800;
+}
+
+.demo-note {
+    padding: 15px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 9px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.demo-note strong {
+    color: var(--text);
+}
+
+.demo-note p {
+    margin: 5px 0 0;
+}
+
+/* 9. Order Confirmation and Receipt */
+.confirmation-panel {
+    margin-top: 22px;
+    text-align: center;
+}
+
+.success-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: #e8f7ef;
+    color: var(--success);
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.confirmation-panel h2 {
+    margin: 6px 0;
+}
+
+.order-number-box {
+    display: inline-flex;
+    gap: 9px;
+    padding: 11px 16px;
+    margin: 20px 0;
+    border: 1px dashed #aab8d6;
+    border-radius: 7px;
+    background: #f7f9ff;
+    font-size: 13px;
+}
+
+.order-number-box strong {
+    color: var(--primary);
+}
+
+.confirmation-details {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    text-align: left;
+}
+
+.confirmation-details h3 {
+    margin: 0 0 10px;
+    font-size: 15px;
+}
+
+.confirmation-details p {
+    margin: 6px 0;
+    color: #475467;
+    font-size: 13px;
+}
+
+.confirmation-product {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 7px 0;
+    border-bottom: 1px solid #f0f1f4;
+    font-size: 13px;
+}
+
+.confirmation-total {
+    margin-top: 12px !important;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    color: var(--text) !important;
+    font-weight: 800;
+}
+
+.confirmation-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+/* 10. Order History */
+.history-panel {
+    margin-top: 22px;
+}
+
+.history-heading {
+    justify-content: space-between;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.history-item p {
+    margin: 3px 0 0;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+/* 11. Responsive Layout */
+@media (max-width: 850px) {
+    .checkout-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-sidebar {
+        position: static;
+    }
+}
+
+@media (max-width: 560px) {
+    .container {
+        width: min(100% - 24px, 1120px);
+    }
+
+    .page-content {
+        padding-top: 25px;
+    }
+
+    .page-heading {
+        align-items: flex-start;
+        gap: 12px;
+        flex-direction: column;
+    }
+
+    .panel {
+        padding: 17px;
+    }
+
+    .form-grid,
+    .choice-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .history-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .confirmation-actions {
+        flex-direction: column;
+    }
+}
+
+/* 12. Print Receipt */
+@media print {
+    body {
+        background: #ffffff;
+    }
+
+    .site-header,
+    .page-heading,
+    #checkout-form,
+    .history-panel,
+    .site-footer,
+    .confirmation-actions {
+        display: none !important;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .page-content {
+        padding: 0;
+    }
+
+    .confirmation-panel {
+        display: block !important;
+        border: 0;
+        box-shadow: none;
+    }
+
+    .success-icon,
+    .eyebrow {
+        display: none;
+    }
+}

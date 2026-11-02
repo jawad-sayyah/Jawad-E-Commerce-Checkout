@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jawad E-Commerce | Checkout</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="logo" href="#">Jawad<span>Store</span></a>
+            <p>Secure and simple checkout</p>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <div class="page-heading">
+            <div>
+                <p class="eyebrow">YOUR PURCHASE</p>
+                <h1>Checkout</h1>
+                <p class="muted">Review your items and enter your information to place the order.</p>
+            </div>
+            <div class="step-indicator">01 <span>—</span> Checkout</div>
+        </div>
+
+        <form id="checkout-form" novalidate>
+            <div class="checkout-layout">
+                <div class="checkout-main">
+                    <section class="panel">
+                        <div class="section-heading">
+                            <span class="section-number">1</span>
+                            <div>
+                                <h2>Customer Information</h2>
+                                <p class="muted">Enter your contact and delivery details.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="customer-name">Full Name</label>
+                                <input type="text" id="customer-name" name="customerName" placeholder="e.g. Jawad Sayyah" minlength="3" required>
+                                <small class="field-error" id="name-error"></small>
+                            </div>
+                            <div class="field">
+                                <label for="customer-email">Email Address</label>
+                                <input type="email" id="customer-email" name="customerEmail" placeholder="name@example.com" required>
+                                <small class="field-error" id="email-error"></small>
+                            </div>
+                            <div class="field">
+                                <label for="customer-phone">Phone Number</label>
+                                <input type="tel" id="customer-phone" name="customerPhone" placeholder="+961 70 123 456" pattern="[0-9+() -]{7,20}" required>
+                                <small class="field-error" id="phone-error"></small>
+                            </div>
+                            <div class="field full-width">
+                                <label for="delivery-address">Delivery Address</label>
+                                <textarea id="delivery-address" name="deliveryAddress" rows="3" placeholder="Street, building, city..." minlength="8" required></textarea>
+                                <small class="field-error" id="address-error"></small>
+                            </div>
+                        </div>
+
+                        <div class="checkbox-field">
+                            <input type="checkbox" id="different-billing">
+                            <label for="different-billing">Use a different billing address</label>
+                        </div>
+                        <div class="field full-width hidden" id="billing-address-field">
+                            <label for="billing-address">Billing Address</label>
+                            <textarea id="billing-address" rows="3" placeholder="Enter your billing address" minlength="8"></textarea>
+                            <small class="field-error" id="billing-error"></small>
+                        </div>
+                    </section>
+
+                    <section class="panel">
+                        <div class="section-heading">
+                            <span class="section-number">2</span>
+                            <div>
+                                <h2>Delivery Method</h2>
+                                <p class="muted">Choose how you want to receive your order.</p>
+                            </div>
+                        </div>
+                        <div class="choice-grid">
+                            <label class="choice-card selected" for="standard-delivery">
+                                <input type="radio" id="standard-delivery" name="delivery" value="standard" checked>
+                                <span class="choice-copy">
+                                    <strong>Standard Delivery</strong>
+                                    <small>3–5 business days</small>
+                                </span>
+                                <strong class="choice-price">$5.00</strong>
+                            </label>
+                            <label class="choice-card" for="express-delivery">
+                                <input type="radio" id="express-delivery" name="delivery" value="express">
+                                <span class="choice-copy">
+                                    <strong>Express Delivery</strong>
+                                    <small>1–2 business days</small>
+                                </span>
+                                <strong class="choice-price">$10.00</strong>
+                            </label>
+                        </div>
+                        <div class="field date-field">
+                            <label for="preferred-date">Preferred Delivery Date <span class="optional">(optional)</span></label>
+                            <input type="date" id="preferred-date">
+                        </div>
+                    </section>
+
+                    <section class="panel">
+                        <div class="section-heading">
+                            <span class="section-number">3</span>
+                            <div>
+                                <h2>Payment Method</h2>
+                                <p class="muted">Choose a payment method. Card payment is a demonstration only.</p>
+                            </div>
+                        </div>
+                        <div class="choice-grid payment-choices">
+                            <label class="choice-card selected" for="cash-payment">
+                                <input type="radio" id="cash-payment" name="payment" value="cash" checked>
+                                <span class="choice-copy">
+                                    <strong>Cash on Delivery</strong>
+                                    <small>Pay when your order arrives</small>
+                                </span>
+                            </label>
+                            <label class="choice-card" for="card-payment">
+                                <input type="radio" id="card-payment" name="payment" value="card">
+                                <span class="choice-copy">
+                                    <strong>Credit / Debit Card</strong>
+                                    <small>Demo card details only</small>
+                                </span>
+                            </label>
+                        </div>
+
+                        <div id="card-details" class="card-details hidden">
+
+                            <div class="form-grid">
+                                <div class="field full-width">
+                                    <label for="card-name">Name on Card</label>
+                                    <input type="text" id="card-name" placeholder="Name as shown on card" minlength="3">
+                                    <small class="field-error" id="card-name-error"></small>
+                                </div>
+                                <div class="field full-width">
+                                    <label for="card-number">Card Number</label>
+                                    <input type="text" id="card-number" inputmode="numeric" autocomplete="off" placeholder="1234 5678 9012 3456" maxlength="23">
+                                    <small class="field-error" id="card-number-error"></small>
+                                </div>
+                                <div class="field">
+                                    <label for="card-expiry">Expiry Date</label>
+                                    <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5">
+                                    <small class="field-error" id="card-expiry-error"></small>
+                                </div>
+                                <div class="field">
+                                    <label for="card-cvv">CVV</label>
+                                    <input type="password" id="card-cvv" inputmode="numeric" placeholder="123" maxlength="4" autocomplete="off">
+                                    <small class="field-error" id="card-cvv-error"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="checkout-sidebar">
+                    <section class="panel order-panel">
+                        <div class="section-heading compact-heading">
+                            <div>
+                                <h2>Order Summary</h2>
+                                <p class="muted"><span id="item-count">0</span> items in your order</p>
+                            </div>
+                        </div>
+                        <div id="order-items" class="order-items"></div>
+
+                        <div class="promo-box">
+                            <label for="promo-code">Promo Code</label>
+                            <div class="promo-input-row">
+                                <input type="text" id="promo-code" placeholder="Enter code">
+                                <button type="button" class="button button-outline" id="apply-promo">Apply</button>
+                            </div>
+                            <small id="promo-message" class="promo-message" aria-live="polite">Try SAVE10, FREESHIP, or WELCOME5.</small>
+                        </div>
+
+                        <div class="price-breakdown">
+                            <div><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
+                            <div><span>Discount</span><strong id="discount" class="discount-value">−$0.00</strong></div>
+                            <div><span>Delivery Fee</span><strong id="delivery-fee">$0.00</strong></div>
+                            <div class="total-row"><span>Total</span><strong id="final-total">$0.00</strong></div>
+                        </div>
+
+                        <button type="submit" class="button button-primary place-order-button">Place Order</button>
+                        <p class="secure-note"><span>✓</span> Your information is used for this demo checkout only.</p>
+                    </section>
+                    <div class="demo-note">
+                        <strong>Demo store</strong>
+                        <p>Products and prices are sample data defined inside this project. No external store or API is connected.</p>
+                    </div>
+                </aside>
+            </div>
+        </form>
+
+        <section id="confirmation-section" class="panel confirmation-panel hidden" aria-live="polite">
+            <div class="success-icon">✓</div>
+            <p class="eyebrow">ORDER CONFIRMED</p>
+            <h2>Thank you for your purchase!</h2>
+            <p class="muted">Your demo order has been created successfully.</p>
+            <div class="order-number-box">Order Number <strong id="order-number"></strong></div>
+            <div id="confirmation-details" class="confirmation-details"></div>
+            <div class="confirmation-actions">
+                <button type="button" class="button button-outline" id="print-receipt">Print Receipt</button>
+                <button type="button" class="button button-primary" id="new-purchase">Start New Order</button>
+            </div>
+        </section>
+
+        <section class="panel history-panel">
+            <div class="section-heading history-heading">
+                <div>
+                    <h2>Recent Order History</h2>
+                    <p class="muted">Orders saved in this browser on this device.</p>
+                </div>
+                <button type="button" class="button button-outline button-small" id="clear-history">Clear History</button>
+            </div>
+            <div id="order-history" class="history-list">
+                <p class="muted">No previous orders yet.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 Jawad Store — Educational checkout project</p>
+    </footer>
+</body>
+</html>
